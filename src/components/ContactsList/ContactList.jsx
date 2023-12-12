@@ -7,12 +7,9 @@ import { getContacts, getFilter } from 'redux/selectors';
 export const ContactList = () => {
   const contacts = useSelector(getContacts);
   const filter = useSelector(getFilter);
-  console.log(contacts);
-  console.log(filter);
   const filteredContacts = contacts.filter(contact =>
     contact.name.toLowerCase().includes(filter.filter.toLowerCase())
   );
-  console.log(filteredContacts);
   const dispatch = useDispatch();
   const handleDelete = () => dispatch(deleteContact(contacts.id));
 
