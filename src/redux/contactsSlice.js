@@ -17,14 +17,14 @@ const contactsSlice = createSlice({
                     return;
                 }
 
-                // const numberInContacts = contacts.some(
-                //     ({ number }) => number === contact.number
-                // );
-                // if (numberInContacts) {
-                //     alert(`${contact.number} is already in contacts`);
+                const numberInContacts = state.contacts.some(
+                    ({ number }) => number === action.payload.number
+                );
+                if (numberInContacts) {
+                    alert(`${action.payload.number} is already in contacts`);
+                    return;
+                }
 
-                //     return;
-                // }
                 state.contacts.push(action.payload);
             },
             prepare(name, number) {
