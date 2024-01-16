@@ -6,18 +6,16 @@ import { getContacts, getFilter } from 'redux/selectors';
 
 export const ContactList = () => {
   const contacts = useSelector(getContacts);
+  console.log(contacts);
   const filter = useSelector(getFilter);
-  const filteredContacts = contacts.filter(contact =>
-    contact.name.toLowerCase().includes(filter.filter.toLowerCase())
+  const filteredContacts = contacts.contacts.filter(contact =>
+    contact.name.toLowerCase().includes(filter.toLowerCase())
   );
   const dispatch = useDispatch();
-  const handleDelete = () => dispatch(deleteContact(contacts.id));
-
-  // const handleToggle = () => dispatch(toggleCompleted(task.id));
 
   return (
     <div>
-      <h3 className={css.contacts_text}>Contacts</h3>
+      .<h3 className={css.contacts_text}>Contacts</h3>
       <table>
         <thead>
           <tr>
@@ -34,7 +32,7 @@ export const ContactList = () => {
                 <button
                   className={css.delete_btn}
                   value={id}
-                  onClick={handleDelete}
+                  onClick={() => dispatch(deleteContact(id))}
                 >
                   Delete
                 </button>
