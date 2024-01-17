@@ -14,7 +14,7 @@ export const ContactList = () => {
     if (!contacts.length) {
       const storedContacts = JSON.parse(localStorage.getItem('contacts'));
       if (storedContacts) {
-        contacts.push(storedContacts);
+        contacts.contacts.push(storedContacts);
       }
     }
   }, [contacts]);
