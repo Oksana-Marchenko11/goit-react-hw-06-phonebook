@@ -12,7 +12,10 @@ export const ContactList = () => {
   const filter = useSelector(getFilter);
   useEffect(() => {
     if (!contacts.length) {
-      const storedContacts = JSON.parse(localStorage.getItem('contacts'));
+      const storedContacts = JSON.parse(
+        localStorage.getItem('persist:contacts')
+      );
+      console.log(storedContacts);
       if (storedContacts) {
         contacts.contacts.push(storedContacts);
       }
