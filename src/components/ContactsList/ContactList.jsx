@@ -10,7 +10,6 @@ export const ContactList = () => {
   const contacts = useSelector(getContacts);
   console.log(contacts);
   const filter = useSelector(getFilter);
-<<<<<<< HEAD
   // useEffect(() => {
   //   if (!contacts.length) {
   //     const storedContacts = JSON.parse(
@@ -23,20 +22,6 @@ export const ContactList = () => {
   //   }
   // }, [contacts]);
   const filteredContacts = contacts.filter(contact =>
-=======
-  useEffect(() => {
-    if (!contacts.length) {
-      const storedContacts = JSON.parse(
-        localStorage.getItem('persist:contacts')
-      );
-      console.log(storedContacts);
-      if (storedContacts) {
-        contacts.contacts.push(storedContacts);
-      }
-    }
-  }, [contacts]);
-  const filteredContacts = contacts.contacts.filter(contact =>
->>>>>>> 18e05e35ad2e278afde775877ef2ccf53afcbeb1
     contact.name.toLowerCase().includes(filter.toLowerCase())
   );
 
