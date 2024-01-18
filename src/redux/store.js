@@ -13,7 +13,7 @@ import {
 } from 'redux-persist'
 
 const persistConfig = {
-    key: 'contacts',
+    key: 'contacts2',
     storage,
     whitelist: ['contacts'],
 }
