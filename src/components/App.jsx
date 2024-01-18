@@ -8,11 +8,9 @@ import { Filter } from './Filter/Filter';
 export const App = () => {
   return (
     <div>
-      <PersistGate loading={null} persistor={persistor}>
-        <ContactForm />
-        <Filter />
-        <ContactList />
-      </PersistGate>
+      <ContactForm />
+      <Filter />
+      <ContactList />
     </div>
   );
 };

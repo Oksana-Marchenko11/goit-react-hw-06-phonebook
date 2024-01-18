@@ -1,6 +1,6 @@
 import React from 'react';
 import css from './ContactsList.module.css';
-import { useEffect } from 'react';
+// import { useEffect } from 'react';
 import { deleteContact } from '../../redux/contactsSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { getContacts, getFilter } from 'redux/selectors';
@@ -10,15 +10,18 @@ export const ContactList = () => {
   const contacts = useSelector(getContacts);
   console.log(contacts);
   const filter = useSelector(getFilter);
-  useEffect(() => {
-    if (!contacts.length) {
-      const storedContacts = JSON.parse(localStorage.getItem('contacts'));
-      if (storedContacts) {
-        contacts.contacts.push(storedContacts);
-      }
-    }
-  }, [contacts]);
-  const filteredContacts = contacts.contacts.filter(contact =>
+  // useEffect(() => {
+  //   if (!contacts.length) {
+  //     const storedContacts = JSON.parse(
+  //       localStorage.getItem('persist:contacts')
+  //     );
+  //     console.log(storedContacts);
+  //     if (storedContacts) {
+  //       contacts.contacts.push(storedContacts);
+  //     }
+  //   }
+  // }, [contacts]);
+  const filteredContacts = contacts.filter(contact =>
     contact.name.toLowerCase().includes(filter.toLowerCase())
   );
 

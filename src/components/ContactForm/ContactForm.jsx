@@ -13,7 +13,7 @@ export const ContactForm = () => {
   const handleSubmit = e => {
     e.preventDefault();
     const form = e.target;
-    const nameInContacts = contacts.contacts.some(
+    const nameInContacts = contacts.some(
       ({ name }) =>
         name.toLowerCase() === form.elements.name.value.toLowerCase()
     );
@@ -22,7 +22,7 @@ export const ContactForm = () => {
       return;
     }
 
-    const numberInContacts = contacts.contacts.some(
+    const numberInContacts = contacts.some(
       ({ number }) => number === form.elements.number.value.toLowerCase()
     );
     if (numberInContacts) {
@@ -30,7 +30,12 @@ export const ContactForm = () => {
       return;
     }
 
-    dispatch(addContact(form.elements.name.value, form.elements.number.value));
+    dispatch(
+      addContact({
+        name: form.elements.name.value,
+        number: form.elements.number.value,
+      })
+    );
 
     form.reset();
   };
