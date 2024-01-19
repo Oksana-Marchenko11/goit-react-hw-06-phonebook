@@ -9,14 +9,14 @@ export const ContactList = () => {
   const contacts = useSelector(getContacts);
   console.log(contacts);
   const filter = useSelector(getFilter);
-  const filteredContacts = contacts.filter(
-    contact =>
-      contact.name.toLowerCase().includes(filter.toLowerCase()) || contact
+  const filteredContacts = contacts.filter(contact =>
+    contact.name.toLowerCase().includes(filter.toLowerCase())
   );
+  const isFilterUsed = filter.trim() !== '';
 
   return (
     <div>
-      .<h3 className={css.contacts_text}>Contacts</h3>
+      <h3 className={css.contacts_text}>Contacts</h3>
       <table>
         <thead>
           <tr>
@@ -25,21 +25,37 @@ export const ContactList = () => {
           </tr>
         </thead>
         <tbody>
-          {filteredContacts.map(({ id, name, number }) => (
-            <tr key={id}>
-              <td>{name}</td>
-              <td>{number}</td>
-              <td>
-                <button
-                  className={css.delete_btn}
-                  value={id}
-                  onClick={() => dispatch(deleteContact(id))}
-                >
-                  Delete
-                </button>
-              </td>
-            </tr>
-          ))}
+          {isFilterUsed
+            ? filteredContacts.map(({ id, name, number }) => (
+                <tr key={id}>
+                  <td>{name}</td>
+                  <td>{number}</td>
+                  <td>
+                    <button
+                      className={css.delete_btn}
+                      value={id}
+                      onClick={() => dispatch(deleteContact(id))}
+                    >
+                      Delete
+                    </button>
+                  </td>
+                </tr>
+              ))
+            : contacts.map(({ id, name, number }) => (
+                <tr key={id}>
+                  <td>{name}</td>
+                  <td>{number}</td>
+                  <td>
+                    <button
+                      className={css.delete_btn}
+                      value={id}
+                      onClick={() => dispatch(deleteContact(id))}
+                    >
+                      Delete
+                    </button>
+                  </td>
+                </tr>
+              ))}
         </tbody>
       </table>
     </div>
